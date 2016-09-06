@@ -1,0 +1,27 @@
+apply plugin: 'com.android.library'
+apply plugin: 'com.novoda.bintray-release'
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode rootProject.ext.versionCode
+        versionName rootProject.ext.versionName
+    }
+}
+
+dependencies {
+    compile "com.android.support:appcompat-v7:$rootProject.ext.supportLibraryVersion"
+}
+
+publish {
+    userOrg = 'sch'
+    groupId = 'com.sch.nova'
+    artifactId = 'nova'
+    publishVersion = rootProject.ext.versionName
+    desc = 'Lightweight MVP framework for Android'
+    website = 'https://github.com/zergtmn/nova'
+}

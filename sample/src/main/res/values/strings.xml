@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Nova Sample</string>
+    <string name="activity_click_counter">MVP activity</string>
+
+    <string name="action_add">Add</string>
+    <string name="action_add_fragment">Add fragment</string>
+    <string name="action_add_nested_fragment">Add nested fragment</string>
+    <string name="action_remove_fragment">Remove</string>
+    <string name="action_start_activity">Start activity</string>
+
+    <string name="click_count">Clicks: %1$d</string>
+    <string name="button_click_me">Click me!</string>
+
+</resources>
