@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<template
+    format="5"
+    revision="1"
+    name="Nova MVP Fragment"
+    description="Creates a new MVP fragment"
+    minApi="9"
+    minBuildApi="14">
+
+    <category value="Fragment" />
+
+    <parameter
+        id="fragmentClass"
+        name="Fragment Name"
+        type="string"
+        constraints="class|nonempty|unique"
+        default="BlankFragment"
+        help="The name of the fragment class to create" />
+
+    <parameter
+        id="viewClass"
+        name="View Name"
+        type="string"
+        constraints="class|nonempty|unique"
+        suggest="${underscoreToCamelCase(classToResource(fragmentClass))}View"
+        default="BlankView"
+        help="The name of the view class to create" />
+
+    <parameter
+        id="presenterClass"
+        name="Presenter Name"
+        type="string"
+        constraints="class|nonempty|unique"
+        suggest="${underscoreToCamelCase(classToResource(fragmentClass))}Presenter"
+        default="BlankPresenter"
+        help="The name of the presenter class to create" />
+
+    <parameter
+        id="generateLayout"
+        name="Generate Layout File"
+        type="boolean"
+        default="true"
+        help="If true, a layout file will be generated" />
+
+    <parameter
+        id="layoutName"
+        name="Layout Name"
+        type="string"
+        constraints="layout|nonempty|unique"
+        default="fragment_blank"
+        visibility="generateLayout"
+        suggest="fragment_${classToResource(fragmentClass)}"
+        help="The name of the layout to create" />
+
+    <parameter
+        id="packageName"
+        name="Package name"
+        type="string"
+        constraints="package"
+        default="com.mycompany.myapp" />
+
+    <thumbs>
+        <thumb>template_mvp_fragment.png</thumb>
+    </thumbs>
+
+    <globals file="globals.xml.ftl" />
+    <execute file="recipe.xml.ftl" />
+
+</template>

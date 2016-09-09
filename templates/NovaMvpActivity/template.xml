@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<template
+    format="5"
+    revision="1"
+    name="Nova MVP Activity"
+    description="Creates a new MVP activity"
+    minApi="9"
+    minBuildApi="14">
+
+    <category value="Activity" />
+    <formfactor value="Mobile" />
+
+    <parameter
+        id="activityClass"
+        name="Activity Name"
+        type="string"
+        constraints="class|nonempty|unique"
+        suggest="${layoutToActivity(layoutName)}"
+        default="BlankActivity"
+        help="The name of the activity class to create" />
+
+    <parameter
+        id="viewClass"
+        name="View Name"
+        type="string"
+        constraints="class|nonempty|unique"
+        suggest="${underscoreToCamelCase(classToResource(activityClass))}View"
+        default="BlankView"
+        help="The name of the view class to create" />
+
+    <parameter
+        id="presenterClass"
+        name="Presenter Name"
+        type="string"
+        constraints="class|nonempty|unique"
+        suggest="${underscoreToCamelCase(classToResource(activityClass))}Presenter"
+        default="BlankPresenter"
+        help="The name of the presenter class to create" />
+
+    <parameter
+        id="generateLayout"
+        name="Generate Layout File"
+        type="boolean"
+        default="true"
+        help="If true, a layout file will be generated" />
+
+    <parameter
+        id="layoutName"
+        name="Layout Name"
+        type="string"
+        constraints="layout|nonempty|unique"
+        suggest="${activityToLayout(activityClass)}"
+        default="activity_blank"
+        visibility="generateLayout"
+        help="The name of the layout to create" />
+
+    <parameter
+        id="isLauncher"
+        name="Launcher Activity"
+        type="boolean"
+        default="false"
+        help="If true, this activity will have a CATEGORY_LAUNCHER intent filter, making it visible in the launcher" />
+
+    <parameter
+        id="packageName"
+        name="Package name"
+        type="string"
+        constraints="package"
+        default="com.mycompany.myapp" />
+
+    <thumbs>
+        <thumb>template_mvp_activity.png</thumb>
+    </thumbs>
+
+    <globals file="globals.xml.ftl" />
+    <execute file="recipe.xml.ftl" />
+
+</template>
