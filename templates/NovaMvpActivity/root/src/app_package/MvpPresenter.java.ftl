@@ -2,8 +2,8 @@ package ${packageName};
 
 import com.sch.nova.BasePresenter;
 
-public class ${presenterClass} extends BasePresenter<${viewClass}> {
-    public ${presenterClass}() {
+class ${presenterClass} extends BasePresenter<${viewClass}> {
+    ${presenterClass}() {
         super(${viewClass}.class);
     }
 }

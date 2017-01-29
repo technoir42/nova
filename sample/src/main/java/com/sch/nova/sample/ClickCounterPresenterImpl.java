@@ -2,10 +2,10 @@ package com.sch.nova.sample;
 
 import com.sch.nova.BasePresenter;
 
-public class ClickCounterPresenterImpl extends BasePresenter<ClickCounterView> implements ClickCounterPresenter {
+class ClickCounterPresenterImpl extends BasePresenter<ClickCounterView> implements ClickCounterPresenter {
     private int clickCount;
 
-    public ClickCounterPresenterImpl() {
+    ClickCounterPresenterImpl() {
         super(ClickCounterView.class);
     }
 

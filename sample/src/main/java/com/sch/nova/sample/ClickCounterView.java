@@ -1,5 +1,5 @@
 package com.sch.nova.sample;
 
-public interface ClickCounterView {
+interface ClickCounterView {
     void setClickCount(int clickCount);
 }

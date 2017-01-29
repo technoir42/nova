@@ -1,4 +1,4 @@
 package ${packageName};
 
-public interface ${viewClass} {
+interface ${viewClass} {
 }
