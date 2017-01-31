@@ -22,6 +22,18 @@ public abstract class MvpActivity<V, P extends Presenter<V>> extends MvpHostActi
     }
 
     @Override
+    protected void onStart() {
+        super.onStart();
+        helper.onStart();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        helper.onStop();
+    }
+
+    @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         helper.onSaveInstanceState(outState);

@@ -47,6 +47,20 @@ public abstract class BasePresenter<V> implements Presenter<V> {
     }
 
     /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void onViewShown() {
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void onViewHidden() {
+    }
+
+    /**
      * Returns the attached view or a dummy view if no view is attached to this presenter.
      */
     public V getView() {

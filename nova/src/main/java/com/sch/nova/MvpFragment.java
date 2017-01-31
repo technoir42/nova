@@ -24,6 +24,18 @@ public abstract class MvpFragment<V, P extends Presenter<V>> extends Fragment im
     }
 
     @Override
+    public void onStart() {
+        super.onStart();
+        helper.onStart();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        helper.onStop();
+    }
+
+    @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         helper.onSaveInstanceState(outState);

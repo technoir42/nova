@@ -40,7 +40,7 @@ public class MvpViewHelper<V, P extends Presenter<V>> {
             }
         }
 
-        getPresenter().attachView(callback.getMvpView());
+        presenter.attachView(callback.getMvpView());
     }
 
     public void onDestroy(boolean isFinishing) {
@@ -48,6 +48,14 @@ public class MvpViewHelper<V, P extends Presenter<V>> {
         if (isFinishing) {
             getPresenterCache().removePresenter(presenterId);
         }
+    }
+
+    public void onStart() {
+        presenter.onViewShown();
+    }
+
+    public void onStop() {
+        presenter.onViewHidden();
     }
 
     public void onSaveInstanceState(Bundle outState) {

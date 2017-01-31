@@ -19,4 +19,14 @@ public interface Presenter<V> {
      * @param isFinishing {@code true} if view's activity is being finished or view is being removed from its activity.
      */
     void detachView(boolean isFinishing);
+
+    /**
+     * Called right after the attached view has been shown.
+     */
+    void onViewShown();
+
+    /**
+     * Called right after the attached view has been hidden.
+     */
+    void onViewHidden();
 }
