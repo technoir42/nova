@@ -1,6 +1,7 @@
 package com.sch.nova;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
 /**
@@ -39,17 +40,20 @@ public abstract class MvpActivity<V, P extends Presenter<V>> extends MvpHostActi
         helper.onSaveInstanceState(outState);
     }
 
+    @NonNull
     @Override
-    public P getPresenter() {
+    public final P getPresenter() {
         return helper.getPresenter();
     }
 
+    @NonNull
     @Override
     @SuppressWarnings("unchecked")
     public V getMvpView() {
         return (V) this;
     }
 
+    @NonNull
     @Override
     public MvpHost getMvpHost() {
         return this;

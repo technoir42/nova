@@ -1,9 +1,20 @@
 package com.sch.nova.sample;
 
-import com.sch.nova.Presenter;
+import com.sch.nova.BasePresenter;
 
-interface ClickCounterPresenter extends Presenter<ClickCounterView> {
-    void loadClickCount();
+class ClickCounterPresenter extends BasePresenter<ClickCounterView> {
+    private int clickCount;
 
-    void buttonClicked();
+    ClickCounterPresenter() {
+        super(ClickCounterView.class);
+    }
+
+    void loadClickCount() {
+        getView().setClickCount(clickCount);
+    }
+
+    void buttonClicked() {
+        clickCount++;
+        getView().setClickCount(clickCount);
+    }
 }

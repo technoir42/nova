@@ -1,11 +1,12 @@
 package com.sch.nova;
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 
 /**
  * Helper class for implementing MVP view.
  */
-public class MvpViewHelper<V, P extends Presenter<V>> {
+public final class MvpViewHelper<V, P extends Presenter<V>> {
     private static final String STATE_PRESENTER_ID = "nova.presenter_id";
     private static final int NO_ID = -1;
 
@@ -17,7 +18,7 @@ public class MvpViewHelper<V, P extends Presenter<V>> {
         this.callback = callback;
     }
 
-    public void onCreate(Bundle savedState) {
+    public void onCreate(@Nullable Bundle savedState) {
         if (savedState != null) {
             presenterId = savedState.getInt(STATE_PRESENTER_ID, NO_ID);
         } else {
@@ -30,9 +31,6 @@ public class MvpViewHelper<V, P extends Presenter<V>> {
 
         if (presenter == null) {
             presenter = callback.createPresenter();
-            if (presenter == null) {
-                throw new NullPointerException("createPresenter() should not return null");
-            }
             if (presenterId != NO_ID) {
                 getPresenterCache().addPresenter(presenterId, presenter);
             } else {

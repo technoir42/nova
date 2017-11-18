@@ -1,6 +1,7 @@
 package com.sch.nova;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
@@ -27,8 +28,9 @@ public abstract class MvpHostActivity extends AppCompatActivity implements MvpHo
         return helper.onRetainCustomNonConfigurationInstance();
     }
 
+    @NonNull
     @Override
-    public PresenterCache getPresenterCache() {
+    public final PresenterCache getPresenterCache() {
         return helper.getPresenterCache();
     }
 }

@@ -1,12 +1,13 @@
 package com.sch.nova;
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
 
 /**
  * Helper class for implementing {@link MvpHost} in any {@link FragmentActivity}.
  */
-public class MvpHostActivityHelper {
+public final class MvpHostActivityHelper {
     private static final String STATE_NEXT_PRESENTER_ID = "nova.next_presenter_id";
 
     private final FragmentActivity activity;
@@ -16,7 +17,7 @@ public class MvpHostActivityHelper {
         this.activity = activity;
     }
 
-    public void onCreate(Bundle savedInstanceState) {
+    public void onCreate(@Nullable Bundle savedInstanceState) {
         presenterCache = (PresenterCache) activity.getLastCustomNonConfigurationInstance();
         if (presenterCache == null) {
             final int nextPresenterId = savedInstanceState != null ? savedInstanceState.getInt(STATE_NEXT_PRESENTER_ID) : 0;

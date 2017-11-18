@@ -7,9 +7,9 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyNoMoreInteractions;
 
-public class ClickCounterPresenterImplTest {
+public class ClickCounterPresenterTest {
     private final ClickCounterView view = mock(ClickCounterView.class);
-    private final ClickCounterPresenter presenter = new ClickCounterPresenterImpl();
+    private final ClickCounterPresenter presenter = new ClickCounterPresenter();
 
     @Before
     public void setUp() {

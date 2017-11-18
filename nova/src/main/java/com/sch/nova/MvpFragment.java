@@ -1,8 +1,10 @@
 package com.sch.nova;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 
 /**
  * Base class for fragments that follow MVP pattern.
@@ -17,6 +19,7 @@ public abstract class MvpFragment<V, P extends Presenter<V>> extends Fragment im
     }
 
     @Override
+    @SuppressWarnings("ConstantConditions")
     public void onDestroyView() {
         final boolean isFinishing = isRemoving() || getActivity().isFinishing();
         helper.onDestroy(isFinishing);
@@ -36,24 +39,31 @@ public abstract class MvpFragment<V, P extends Presenter<V>> extends Fragment im
     }
 
     @Override
-    public void onSaveInstanceState(Bundle outState) {
+    public void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
         helper.onSaveInstanceState(outState);
     }
 
+    @NonNull
     @Override
-    public P getPresenter() {
+    public final P getPresenter() {
         return helper.getPresenter();
     }
 
+    @NonNull
     @Override
     @SuppressWarnings("unchecked")
     public V getMvpView() {
         return (V) this;
     }
 
+    @NonNull
     @Override
     public MvpHost getMvpHost() {
-        return (MvpHost) getActivity();
+        final FragmentActivity activity = getActivity();
+        if (activity == null) {
+            throw new IllegalStateException("Fragment is not attached to Activity");
+        }
+        return (MvpHost) activity;
     }
 }

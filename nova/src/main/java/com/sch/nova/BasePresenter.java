@@ -7,14 +7,8 @@ import android.support.annotation.NonNull;
  * Base class of MVP presenter.
  */
 public abstract class BasePresenter<V> implements Presenter<V> {
-    private V dummyView;
+    private final V dummyView;
     private V view;
-
-    /**
-     * Constructor.
-     */
-    public BasePresenter() {
-    }
 
     /**
      * Constructor.
@@ -22,10 +16,8 @@ public abstract class BasePresenter<V> implements Presenter<V> {
      * @param dummyViewClass view interface to create a dummy view that will be returned
      *                       from {@link #getView()} when there is no view attached to this presenter.
      */
-    public BasePresenter(Class<V> dummyViewClass) {
-        if (dummyViewClass != null) {
-            dummyView = Utils.createStub(dummyViewClass);
-        }
+    protected BasePresenter(@NonNull Class<V> dummyViewClass) {
+        dummyView = Utils.createStub(dummyViewClass);
     }
 
     /**
@@ -63,14 +55,8 @@ public abstract class BasePresenter<V> implements Presenter<V> {
     /**
      * Returns the attached view or a dummy view if no view is attached to this presenter.
      */
-    public V getView() {
+    @NonNull
+    public final V getView() {
         return view != null ? view : dummyView;
-    }
-
-    /**
-     * Returns {@code true} if view is attached to this presenter.
-     */
-    public boolean hasView() {
-        return view != null;
     }
 }

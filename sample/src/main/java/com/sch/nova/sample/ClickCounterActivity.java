@@ -1,9 +1,9 @@
 package com.sch.nova.sample;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -17,15 +17,10 @@ public class ClickCounterActivity extends MvpActivity<ClickCounterView, ClickCou
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_click_counter);
 
-        final Button button = (Button) findViewById(R.id.button);
-        clickCountView = (TextView) findViewById(R.id.click_count);
+        clickCountView = findViewById(R.id.click_count);
 
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getPresenter().buttonClicked();
-            }
-        });
+        final Button button = findViewById(R.id.button);
+        button.setOnClickListener(v -> getPresenter().buttonClicked());
 
         getPresenter().loadClickCount();
     }
@@ -46,8 +41,9 @@ public class ClickCounterActivity extends MvpActivity<ClickCounterView, ClickCou
         clickCountView.setText(getString(R.string.click_count, clickCount));
     }
 
+    @NonNull
     @Override
     public ClickCounterPresenter createPresenter() {
-        return new ClickCounterPresenterImpl();
+        return new ClickCounterPresenter();
     }
 }
