@@ -5,7 +5,7 @@ Lightweight MVP (Model-View-Presenter) framework for Android.
 ## Usage
 
 ```
-compile 'com.sch.nova:nova:1.0.1'
+compile 'com.sch.nova:nova:1.0.2'
 ```
 
 ## License

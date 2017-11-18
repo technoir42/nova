@@ -27,5 +27,5 @@ publish {
     artifactId = 'nova'
     publishVersion = rootProject.ext.versionName
     desc = 'Lightweight MVP framework for Android'
-    website = 'https://github.com/zergtmn/nova'
+    website = 'https://github.com/technoir3/nova'
 }
