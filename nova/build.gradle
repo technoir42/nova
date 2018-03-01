@@ -15,6 +15,10 @@ android {
         warningsAsErrors true
         informational 'GradleDependency'
     }
+
+    libraryVariants.all {
+        it.generateBuildConfig.enabled = false
+    }
 }
 
 dependencies {
