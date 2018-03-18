@@ -10,15 +10,10 @@ import android.support.v4.app.FragmentActivity;
 public final class MvpHostActivityHelper {
     private static final String STATE_NEXT_PRESENTER_ID = "nova.next_presenter_id";
 
-    private final FragmentActivity activity;
     private PresenterCache presenterCache;
 
-    public MvpHostActivityHelper(FragmentActivity activity) {
-        this.activity = activity;
-    }
-
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        presenterCache = (PresenterCache) activity.getLastCustomNonConfigurationInstance();
+    public void onCreate(@Nullable Bundle savedInstanceState, @Nullable Object lastNonConfigurationInstance) {
+        presenterCache = (PresenterCache) lastNonConfigurationInstance;
         if (presenterCache == null) {
             final int nextPresenterId = savedInstanceState != null ? savedInstanceState.getInt(STATE_NEXT_PRESENTER_ID) : 0;
             presenterCache = new PresenterCache(nextPresenterId);
@@ -36,6 +31,7 @@ public final class MvpHostActivityHelper {
         return presenterCache;
     }
 
+    @Nullable
     public Object onRetainCustomNonConfigurationInstance() {
         return presenterCache;
     }
