@@ -26,6 +26,11 @@ dependencies {
     implementation "com.android.support:appcompat-v7:$rootProject.ext.supportLibraryVersion"
     implementation project(':nova-mvp')
 
-    testImplementation "junit:junit:$rootProject.ext.junitVersion"
+    testImplementation "org.junit.jupiter:junit-jupiter-api:$rootProject.ext.junitJupiterVersion"
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:$rootProject.ext.junitJupiterVersion"
     testImplementation "org.mockito:mockito-core:$rootProject.ext.mockitoVersion"
+}
+
+tasks.withType(Test) {
+    useJUnitPlatform()
 }

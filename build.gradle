@@ -41,6 +41,6 @@ ext {
     targetSdkVersion = 27
 
     supportLibraryVersion = '27.1.0'
-    junitVersion = '4.12'
+    junitJupiterVersion = '5.1.0'
     mockitoVersion = '2.16.0'
 }
