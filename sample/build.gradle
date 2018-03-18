@@ -24,7 +24,7 @@ android {
 
 dependencies {
     implementation "com.android.support:appcompat-v7:$rootProject.ext.supportLibraryVersion"
-    implementation project(':nova')
+    implementation project(':nova-mvp')
 
     testImplementation "junit:junit:$rootProject.ext.junitVersion"
     testImplementation "org.mockito:mockito-core:$rootProject.ext.mockitoVersion"

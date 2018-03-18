@@ -1,2 +1,2 @@
-include ':nova'
+include ':nova-mvp'
 include ':sample'

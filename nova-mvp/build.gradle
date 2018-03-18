@@ -22,13 +22,13 @@ android {
 }
 
 dependencies {
-    compile "com.android.support:appcompat-v7:$rootProject.ext.supportLibraryVersion"
+    implementation "com.android.support:appcompat-v7:$rootProject.ext.supportLibraryVersion"
 }
 
 publish {
     userOrg = 'sch'
     groupId = 'com.sch.nova'
-    artifactId = 'nova'
+    artifactId = 'nova-mvp'
     publishVersion = rootProject.ext.versionName
     desc = 'Lightweight MVP framework for Android'
     website = 'https://github.com/technoir3/nova'
