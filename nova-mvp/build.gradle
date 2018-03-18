@@ -1,5 +1,6 @@
 apply plugin: 'com.android.library'
-apply plugin: 'com.novoda.bintray-release'
+apply plugin: 'com.jfrog.bintray'
+apply from: "$rootDir/gradle/publish.gradle"
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
@@ -23,11 +24,20 @@ dependencies {
     implementation "com.android.support:appcompat-v7:$rootProject.ext.supportLibraryVersion"
 }
 
-publish {
-    userOrg = 'sch'
-    groupId = 'com.sch.nova'
-    artifactId = 'nova-mvp'
-    publishVersion = rootProject.ext.novaVersion
-    desc = 'Lightweight MVP framework for Android'
-    website = 'https://github.com/technoir3/nova'
+bintray {
+    user = findProperty('BINTRAY_USER') ?: ''
+    key = findProperty('BINTRAY_KEY') ?: ''
+    pkg {
+        repo = 'maven'
+        name = 'nova'
+        desc = 'Lightweight MVP framework for Android'
+        websiteUrl = 'https://github.com/technoir3/nova'
+        issueTrackerUrl = 'https://github.com/technoir3/nova/issues'
+        vcsUrl = 'https://github.com/technoir3/nova.git'
+        licenses = ['Apache-2.0']
+        version {
+            name = project.version
+        }
+    }
+    publications = ['aar']
 }

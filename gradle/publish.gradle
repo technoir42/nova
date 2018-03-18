@@ -1,0 +1,34 @@
+apply plugin: 'maven-publish'
+apply plugin: 'digital.wup.android-maven-publish'
+
+afterEvaluate { project ->
+    publishing {
+        publications {
+            aar(MavenPublication) {
+                from components.android
+
+                artifact javadocsJar
+                artifact sourcesJar
+            }
+        }
+    }
+
+    task generateJavadocs(type: Javadoc, dependsOn: preBuild) {
+        source = android.sourceSets.main.java.srcDirs
+        classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+        classpath += files(android.libraryVariants.collect { variant ->
+            variant.javaCompile.classpath.files
+        })
+        options.addStringOption('Xdoclint:none', '-quiet')
+    }
+
+    task javadocsJar(type: Jar, dependsOn: generateJavadocs) {
+        classifier = 'javadoc'
+        from generateJavadocs.destinationDir
+    }
+
+    task sourcesJar(type: Jar) {
+        classifier = 'sources'
+        from android.sourceSets.main.java.sourceFiles
+    }
+}

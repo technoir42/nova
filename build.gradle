@@ -6,9 +6,10 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.0.0'
+        classpath 'com.android.tools.build:gradle:3.0.1'
         classpath 'com.github.ben-manes:gradle-versions-plugin:0.17.0'
-        classpath 'com.novoda:bintray-release:0.7.0'
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.0'
+        classpath 'digital.wup:android-maven-publish:3.3.0'
     }
 }
 
@@ -17,6 +18,10 @@ allprojects {
         google()
         jcenter()
     }
+
+    group = 'com.sch.nova'
+    version = '1.0.3'
+
     tasks.withType(JavaCompile) {
         options.compilerArgs << "-Xlint:unchecked" << "-Xlint:deprecation"
     }
@@ -26,13 +31,16 @@ task clean(type: Delete) {
     delete rootProject.buildDir
 }
 
+wrapper {
+    distributionType = Wrapper.DistributionType.ALL
+}
+
 ext {
     compileSdkVersion = 27
     minSdkVersion = 14
     targetSdkVersion = 27
-    supportLibraryVersion = '27.0.1'
-    junitVersion = '4.12'
-    mockitoVersion = '2.12.0'
 
-    novaVersion = '1.0.3'
+    supportLibraryVersion = '27.1.0'
+    junitVersion = '4.12'
+    mockitoVersion = '2.16.0'
 }
