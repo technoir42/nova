@@ -19,9 +19,8 @@ public abstract class MvpFragment<V, P extends Presenter<V>> extends Fragment im
     }
 
     @Override
-    @SuppressWarnings("ConstantConditions")
     public void onDestroyView() {
-        final boolean isFinishing = isRemoving() || getActivity().isFinishing();
+        final boolean isFinishing = isRemoving() || requireActivity().isFinishing();
         helper.onDestroy(isFinishing);
         super.onDestroyView();
     }
@@ -60,10 +59,6 @@ public abstract class MvpFragment<V, P extends Presenter<V>> extends Fragment im
     @NonNull
     @Override
     public MvpHost getMvpHost() {
-        final FragmentActivity activity = getActivity();
-        if (activity == null) {
-            throw new IllegalStateException("Fragment is not attached to Activity");
-        }
-        return (MvpHost) activity;
+        return (MvpHost) requireActivity();
     }
 }
