@@ -5,9 +5,9 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
 
 /**
- * Helper class for implementing {@link MvpHost} in any {@link FragmentActivity}.
+ * Helper class for implementing {@link MvpHost}.
  */
-public final class MvpHostActivityHelper {
+public final class MvpHostHelper {
     private static final String STATE_NEXT_PRESENTER_ID = "nova.next_presenter_id";
 
     private PresenterCache presenterCache;

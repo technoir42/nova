@@ -9,7 +9,7 @@ import android.support.v7.app.AppCompatActivity;
  * Base class for activities that can contain MVP views but does not necessarily follow MVP pattern themselves.
  */
 public abstract class MvpHostActivity extends AppCompatActivity implements MvpHost {
-    private final MvpHostActivityHelper helper = new MvpHostActivityHelper();
+    private final MvpHostHelper helper = new MvpHostHelper();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
