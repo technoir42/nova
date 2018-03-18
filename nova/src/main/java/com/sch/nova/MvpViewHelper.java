@@ -42,8 +42,9 @@ public final class MvpViewHelper<V, P extends Presenter<V>> {
     }
 
     public void onDestroy(boolean isFinishing) {
-        presenter.detachView(isFinishing);
+        presenter.detachView();
         if (isFinishing) {
+            presenter.destroy();
             getPresenterCache().removePresenter(presenterId);
         }
     }

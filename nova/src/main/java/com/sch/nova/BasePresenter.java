@@ -34,8 +34,15 @@ public abstract class BasePresenter<V> implements Presenter<V> {
      */
     @Override
     @CallSuper
-    public void detachView(boolean isFinishing) {
+    public void detachView() {
         view = null;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void destroy() {
     }
 
     /**

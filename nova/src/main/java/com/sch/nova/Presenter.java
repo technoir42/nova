@@ -15,10 +15,13 @@ public interface Presenter<V> {
 
     /**
      * Detaches view from the presenter.
-     *
-     * @param isFinishing {@code true} if view's activity is being finished or view is being removed from its activity.
      */
-    void detachView(boolean isFinishing);
+    void detachView();
+
+    /**
+     * Called when this {@link Presenter} is no longer needed.
+     */
+    void destroy();
 
     /**
      * Called right after the attached view has been shown.
