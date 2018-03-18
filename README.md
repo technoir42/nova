@@ -1,11 +1,13 @@
 # Nova
 
+[![Download](https://api.bintray.com/packages/sch/maven/nova/images/download.svg)](https://bintray.com/sch/maven/nova/_latestVersion)
+
 Lightweight MVP (Model-View-Presenter) framework for Android.
 
 ## Usage
 
 ```
-compile 'com.sch.nova:nova:1.0.2'
+implementation 'com.sch.nova:nova:1.0.2'
 ```
 
 ## License
