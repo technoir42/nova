@@ -1,5 +1,6 @@
 package com.sch.nova;
 
+import android.support.annotation.Nullable;
 import android.util.SparseArray;
 
 /**
@@ -24,6 +25,7 @@ public final class PresenterCache {
      *
      * @param id id of the presenter
      */
+    @Nullable
     @SuppressWarnings("unchecked")
     public <P extends Presenter<?>> P getPresenter(int id) {
         return (P) presenters.get(id);
